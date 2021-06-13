@@ -6,31 +6,41 @@ function computerPlay(){
 }
 
 function play(conputerSelection, playerSelection){
-    let result = null;
-    let winner = null;
-    let loser = null;
-    if(conputerSelection().toLowerCase() == playerSelection.toLowerCase()){
+    let result;
+    let winner;
+    let loser ;
+    let test = conputerSelection()
+
+    if(test.toLowerCase() == playerSelection.toLowerCase()){
+        console.log(test)
+        console.log(playerSelection)
         return "draw"
     }
 
-    if(playerSelection.toLowerCase() == "rock" && conputerSelection().toLowerCase() == "scissors"){
+    if(playerSelection.toLowerCase() == "rock" 
+        && test.toLowerCase() == "scissors"){
         winner = playerSelection;
-        loser = conputerSelection();
+        loser = test;
         result = "win";
-    }else if(playerSelection.toLowerCase() == "paper" && conputerSelection().toLowerCase() == "rock"){
+    }else if(playerSelection.toLowerCase() == "paper" 
+        && test.toLowerCase() == "rock"){
         winner = playerSelection;
-        loser = conputerSelection();
+        loser = test;
         result = "win";
-    }else if(playerSelection.toLowerCase() == "scissors" && conputerSelection().toLowerCase() == "paper"){
+    }else if(playerSelection.toLowerCase() == "scissors" 
+        && test.toLowerCase() == "paper"){
         winner = playerSelection;
-        loser = conputerSelection();
+        loser = test;
         result = "win";
     }else{
-        winner = conputerSelection();
+        winner = test;
         loser = playerSelection;
         result = "lose";
     }
-    return  `You ${result}! ${winner} beats ${playerSelection}`
+    //console.log("post if com: " + conputerSelection().toLowerCase());
+    //console.log("post if player: " + playerSelection.toLowerCase());
+
+    return  `You ${result}! ${winner} beats ${loser}`
 }
 
-console.log(play(computerPlay, "rock"));
+console.log(play(computerPlay, "paper"));
