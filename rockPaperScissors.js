@@ -8,39 +8,53 @@ function computerPlay(){
 function play(conputerSelection, playerSelection){
     let result;
     let winner;
-    let loser ;
+    let loser;
     let test = conputerSelection()
 
     if(test.toLowerCase() == playerSelection.toLowerCase()){
-        console.log(test)
-        console.log(playerSelection)
-        return "draw"
+        return null;
     }
 
     if(playerSelection.toLowerCase() == "rock" 
         && test.toLowerCase() == "scissors"){
         winner = playerSelection;
         loser = test;
-        result = "win";
+        result = true;
     }else if(playerSelection.toLowerCase() == "paper" 
         && test.toLowerCase() == "rock"){
         winner = playerSelection;
         loser = test;
-        result = "win";
+        result = true;
     }else if(playerSelection.toLowerCase() == "scissors" 
         && test.toLowerCase() == "paper"){
         winner = playerSelection;
         loser = test;
-        result = "win";
+        result = true;
     }else{
         winner = test;
         loser = playerSelection;
-        result = "lose";
+        result = false;
     }
     //console.log("post if com: " + conputerSelection().toLowerCase());
     //console.log("post if player: " + playerSelection.toLowerCase());
 
-    return  `You ${result}! ${winner} beats ${loser}`
+    return  result;
 }
 
-console.log(play(computerPlay, "paper"));
+function game(play, numGames){
+    let test = {wins: 0, loeses: 0};
+    for(let i = 0; i < numGames - 1; ++i){
+        let test = window.prompt("Rock Paper Scissors?")
+        if(play(computerPlay, test)){
+            ++test.wins;
+        }else if(!play(computerPlay, test)){
+            ++test.loeses;
+        }else{
+            continue;
+        }
+    }
+    return test.toString();
+    
+}
+
+console.log(game(play, 5));
